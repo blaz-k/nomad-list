@@ -1,42 +1,50 @@
 <template>
   <section class="card-list">
-    <div v-for="countryCity in countriesAndCapitals" :key="countryCity">
-      <article class="card">
-        <header class="card-header">
-          <p>May 25th 2020</p>
-          <h2>{{ countryCity.country }}</h2>
-          <h3>{{ countryCity.city }}</h3>
-        </header>
-        <div class="card-author">
-          <a href="#" class="author-avatar">
-            <img src="../assets/logo.png" alt=""
-          /></a>
-          <svg class="half-circle" viewBox="0 0 106 57">
-            <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
-          </svg>
-          <div class="author-name">
-            <div class="author-name-prefix">Author</div>
-            Blaz Kmetic
-          </div>
+    <article class="card">
+      <header class="card-header">
+        <p>May 25th 2020</p>
+        <h2>Cards tricks are fun!</h2>
+      </header>
+      <div class="card-author">
+        <a href="#" class="author-avatar">
+          <img src="../assets/logo.png" alt=""
+        /></a>
+        <svg class="half-circle" viewBox="0 0 106 57">
+          <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+        </svg>
+        <div class="author-name">
+          <div class="author-name-prefix">Author</div>
+          Blaz Kmetic
         </div>
-      </article>
-    </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <header class="card-header">
+        <p>May 25th 2020</p>
+        <h2>Cards tricks are fun!</h2>
+      </header>
+    </article>
+
+    <article class="card">
+      <header class="card-header">
+        <p>May 25th 2020</p>
+        <h2>Cards tricks are fun!</h2>
+      </header>
+    </article>
+
+    <article class="card">
+      <header class="card-header">
+        <p>May 25th 2020</p>
+        <h2>Cards tricks are fun!</h2>
+      </header>
+    </article>
   </section>
-  <!-- 
-  <div v-for="countryCity in countriesAndCapitals" :key="countryCity">
-    {{ countryCity.country }} - {{ countryCity.city }}
-  </div> -->
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 export default {
-  name: "About",
-
-  computed: {
-    ...mapState(["countriesAndCapitals"]),
-  },
+  name: "Cards",
 };
 </script>
 

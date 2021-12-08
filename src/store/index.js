@@ -1,12 +1,39 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 
 export default createStore({
   state: {
+    countriesAndCapitals: [
+      { country: "Slovenia", city: "Ljubljana", id: 1 },
+      { country: "Austria", city: "Vienna", id: 2 },
+      { country: "Belgium", city: "Brussels", id: 3 },
+      { country: "Bulgaria", city: "Sofia", id: 4 },
+      { country: "Croatia", city: "Zagreb", id: 5 },
+      { country: "Cyprus", city: "Nicosia", id: 6 },
+      { country: "Czech Republic", city: "Prague", id: 7 },
+      { country: "Denmark", city: "Copenhagen", id: 8 },
+      { country: "Estonia", city: "Tallinn", id: 9 },
+      { country: "Finland", city: "Helsinki", id: 10 },
+      { country: "France", city: "Paris", id: 11 },
+      { country: "Germany", city: "Berlin", id: 12 },
+      { country: "Greece", city: "Athens", id: 13 },
+      { country: "Hungary", city: "Budapest", id: 14 },
+      { country: "Ireland", city: "Dublin", id: 15 },
+      { country: "Italy", city: "Rome", id: 16 },
+      { country: "Latvia", city: "Riga", id: 17 },
+      { country: "Lithuania", city: "Vilnius", id: 18 },
+      { country: "Luxembourg", city: "Luxembourg City", id: 19 },
+      { country: "Malta", city: "Valleta", id: 20 },
+      { country: "Netherlands", city: "Amsterdam", id: 21 },
+      { country: "Poland", city: "Warsaw", id: 22 },
+      { country: "Portugal", city: "Lisbon", id: 23 },
+      { country: "Romania", city: "Bucharest", id: 24 },
+      { country: "Slovakia", city: "Bratislava", id: 25 },
+      { country: "Spain", city: "Valleta", id: 26 },
+      { country: "Malta", city: "Madrid", id: 27 },
+      { country: "Sweden", city: "Stockholm", id: 28 },
+    ],
   },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+  mutations: {},
+  actions: {},
+  modules: {},
+});
