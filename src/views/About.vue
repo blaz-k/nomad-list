@@ -1,27 +1,29 @@
 <template>
-  <section class="card-list">
-    <div v-for="countryCity in countriesAndCapitals" :key="countryCity">
-      <article class="card">
-        <header class="card-header">
-          <p>May 25th 2020</p>
-          <h2>{{ countryCity.country }}</h2>
-          <h3>{{ countryCity.city }}</h3>
-        </header>
-        <div class="card-author">
-          <a href="#" class="author-avatar">
-            <img src="../assets/logo.png" alt=""
-          /></a>
-          <svg class="half-circle" viewBox="0 0 106 57">
-            <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
-          </svg>
-          <div class="author-name">
-            <div class="author-name-prefix">Author</div>
-            Blaz Kmetic
+  <div id="about">
+    <section class="card-list">
+      <div v-for="countryCity in countriesAndCapitals" :key="countryCity">
+        <article class="card">
+          <header class="card-header">
+            <p>May 25th 2020</p>
+            <h2>{{ countryCity.country }}</h2>
+            <h3>{{ countryCity.city }}</h3>
+          </header>
+          <div class="card-author">
+            <a href="#" class="author-avatar">
+              <img src="../assets/logo.png" alt=""
+            /></a>
+            <svg class="half-circle" viewBox="0 0 106 57">
+              <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+            </svg>
+            <div class="author-name">
+              <div class="author-name-prefix">Author</div>
+              Blaz Kmetic
+            </div>
           </div>
-        </div>
-      </article>
-    </div>
-  </section>
+        </article>
+      </div>
+    </section>
+  </div>
   <!-- 
   <div v-for="countryCity in countriesAndCapitals" :key="countryCity">
     {{ countryCity.country }} - {{ countryCity.city }}
@@ -33,7 +35,6 @@ import { mapState } from "vuex";
 
 export default {
   name: "About",
-
   computed: {
     ...mapState(["countriesAndCapitals"]),
   },
@@ -51,13 +52,13 @@ body {
   font-family: "DM Mono", monospace;
 }
 
-.card-list {
+#about .card-list {
   display: flex;
   padding: 3rem;
   overflow-x: scroll;
 }
 
-.card {
+#about .card {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -72,32 +73,32 @@ body {
   transition: 0.2s;
 }
 
-.card-list::-webkit-scrollbar {
+#about .card-list::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
-.card-list::-webkit-scrollbar-thumb {
+#about .card-list::-webkit-scrollbar-thumb {
   background: #201c29;
   border-radius: 10px;
   box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
     inset -2px -2px 2px rgba(0, 0, 0, 0.25);
 }
-.card-list::-webkit-scrollbar-track {
+#about .card-list::-webkit-scrollbar-track {
   background: linear-gradient(90deg, #201c29, #201c29 1px, #17141d 0, #17141d);
 }
 
-.card:hover {
+#about .card:hover {
   transform: translateY(-1rems);
 }
-.card:hover ~ .card {
+#about .card:hover ~ .card {
   transform: translateX(130px);
 }
 
-.card::not(:first-child) {
+#about .card::not(:first-child) {
   margin-left: -130px;
 }
 
-.card-author {
+#about .card-author {
   position: relative;
   display: grid;
   grid-template-columns: 75px 1fr;
@@ -105,16 +106,16 @@ body {
   margin: 3rem 0 0;
 }
 
-.author-avatar img {
+#about .author-avatar img {
   display: block;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  filter: grayscale(100%); /*  BLACK AND WHITE */
+  /* filter: grayscale(100%);  Uncomment for BLACK AND WHITE picture */
   margin: 16px 10px;
 }
 
-.half-circle {
+#about .half-circle {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -126,13 +127,13 @@ body {
   stroke-linecap: round;
 }
 
-.author-name-prefix {
+#about .author-name-prefix {
   font-style: normal;
   font-weight: 700;
   color: #7a7a8c;
 }
 
-.card-header h2:hover {
+#about .card-header h2:hover {
   background: linear-gradient(90deg, #ff8a00, #e52e71);
   text-shadow: none;
   background-clip: text;
