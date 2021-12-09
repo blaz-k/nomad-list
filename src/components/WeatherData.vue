@@ -1,12 +1,16 @@
 <template>
-  <div></div>
+  <div v-if="weatherData">
+    {{ weatherData }}
+  </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "WeatherData",
   created() {
-    this.weatherData();
+    this.getWeatherData();
   },
   data() {
     return {
