@@ -17,6 +17,9 @@
             {{ showCountryCapital.country }} is:
           </h2>
           <h3>{{ Math.round(weatherData.main.temp) }}°C</h3>
+          <div>
+            <p>It has population of: on km/2</p>
+          </div>
           <!-- <p>{{ covidResults[countryCovid] }}</p> -->
         </header>
         <div class="card-author">
@@ -50,6 +53,7 @@ export default {
     this.getWeatherData();
     // this.getCovid();
     // this.getHotels();
+    this.getPopulationArea();
   },
 
   data() {
@@ -62,9 +66,37 @@ export default {
       covidUrl: "https://covid2019-api.herokuapp.com/country/",
       covidResults: null,
       countryCovid: this.showCountryCapital.country,
+
+      //Population data:
+      populationURl: "https://spott.p.rapidapi.com/places/",
+      url2: "https://spott.p.rapidapi.com/places/",
+      countryId: this.showCountryCapital.abbrev,
+      populationArea: null,
     };
   },
   methods: {
+    // GET POPULATION AND AREA REQUEST
+    getPopulationArea() {
+      const options = {
+        method: "GET",
+        url: `${this.url2}${this.countryId}`,
+        // url: "https://spott.p.rapidapi.com/places/", to je začeten url
+        headers: {
+          "x-rapidapi-host": "spott.p.rapidapi.com",
+          "x-rapidapi-key": "",
+        },
+      };
+
+      axios
+        .request(options)
+        .then(function (response) {
+          //   console.log(response.data);
+        })
+        .catch(function (error) {
+          //   console.error(error);
+        });
+    },
+
     // GET WEATHER REQUEST :
     async getWeatherData() {
       try {
@@ -72,12 +104,13 @@ export default {
           `${this.weatherUrl}${this.showCountryCapital.city}&units=${this.units}&appid=${this.weatherApi}`
         );
         this.weatherData = res.data;
+        console.log(this.weatherData);
       } catch (error) {
         let res = await axios.get(
           `${this.weatherUrl}${this.showCountryCapital.country}&units=${this.units}&appid=${this.weatherApi}`
         );
         this.weatherData = res.data;
-        // console.log(this.weatherData);
+        console.log(this.weatherData);
       }
     },
 
