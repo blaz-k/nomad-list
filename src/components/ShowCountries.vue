@@ -17,6 +17,7 @@
             {{ showCountryCapital.country }} is:
           </h2>
           <h3>{{ Math.round(weatherData.main.temp) }}°C</h3>
+          <!-- <p>{{ covidResults[countryCovid] }}</p> -->
         </header>
         <div class="card-author">
           <a href="#" class="author-avatar">
@@ -47,51 +48,72 @@ export default {
   },
   created() {
     this.getWeatherData();
-    this.getCovid();
+    // this.getCovid();
+    // this.getHotels();
   },
+
   data() {
     return {
-      covidUrl: "https://covid2019-api.herokuapp.com/country/",
       weatherApi: "a04401ce5a86509d82dbf7cafc6d2e6f",
       weatherUrl: "https://api.openweathermap.org/data/2.5/weather?q=",
       weatherData: null,
       units: "metric",
+      //Covid data:
+      covidUrl: "https://covid2019-api.herokuapp.com/country/",
       covidResults: null,
-      countryTest: this.showCountryCapital.country,
+      countryCovid: this.showCountryCapital.country,
     };
   },
   methods: {
-    //KAKO KLICAT COUNTY NAMESTO CITY ČE IMA CITY ERROR
+    // GET WEATHER REQUEST :
     async getWeatherData() {
-      let res = await axios.get(
-        `${this.weatherUrl}${this.showCountryCapital.city}&units=${this.units}&appid=${this.weatherApi}`
-      );
-
-      //   if (res === "404") {
-      //     let res = await axios.get(
-      //       `${this.weatherUrl}${this.showCountryCapital.country}&units=${this.units}&appid=${this.weatherApi}`
-      //     );
-      //   } else {
-      //     let res = await axios.get(
-      //       `${this.weatherUrl}${this.showCountryCapital.city}&units=${this.units}&appid=${this.weatherApi}`
-      //     );
-      //   }
-      if (res === "404 (Not Found)") {
+      try {
+        let res = await axios.get(
+          `${this.weatherUrl}${this.showCountryCapital.city}&units=${this.units}&appid=${this.weatherApi}`
+        );
+        this.weatherData = res.data;
+      } catch (error) {
         let res = await axios.get(
           `${this.weatherUrl}${this.showCountryCapital.country}&units=${this.units}&appid=${this.weatherApi}`
         );
         this.weatherData = res.data;
-        console.log(this.weatherData);
-      } else {
-        this.weatherData = res.data;
-        console.log(this.weatherData);
+        // console.log(this.weatherData);
       }
     },
 
+    // GET HOTELS REQUEST :
     async getCovid() {
-      let response = await axios.get(`${this.covidUrl}${this.countryTest}`);
-      this.covidResults = response;
-      console.log(this.covidResults);
+      let response = await axios.get(`${this.covidUrl}${this.countryCovid}`);
+      this.covidResults = response.data;
+      //   console.log(this.covidResults);
+    },
+
+    // GET COVID REQUEST :
+    getHotels() {
+      const options = {
+        method: "GET",
+        url: "https://hotels4.p.rapidapi.com/locations/v2/search",
+        params: {
+          query: this.showCountryCapital,
+          locale: "en_US",
+          currency: "USD",
+        },
+        headers: {
+          "x-rapidapi-host": "hotels4.p.rapidapi.com",
+          "x-rapidapi-key":
+            "c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a",
+        },
+      };
+
+      axios
+        .request(options)
+        .then(function (response) {
+          //   this.hotels = response;
+          //   console.log(response);
+        })
+        .catch(function (error) {
+          //   console.error(error);
+        });
     },
   },
 };
