@@ -12,7 +12,6 @@
       Populationarea e obstaja:
       {{ populationArea }}
     </div>
-    <p>Populationarea: {{ populationArea }}</p>
 
     <section class="card-list" v-if="weatherData">
       <article class="card">
@@ -81,7 +80,7 @@ export default {
     };
   },
   methods: {
-    // GET POPULATION AND AREA REQUEST( poklice vendar ne morem prikazati)
+    // GET POPULATION AND AREA REQUEST( deluje)
     getPopulationArea() {
       const options = {
         method: "GET",
@@ -96,12 +95,8 @@ export default {
 
       axios
         .request(options)
-        .then(function (response) {
-          console.log("before");
-          console.log(response);
-          console.log("after");
+        .then((response) => {
           this.populationArea = response;
-          console.log("pol");
           console.log(this.populationArea);
         })
         .catch(function (error) {
@@ -136,33 +131,33 @@ export default {
     },
 
     // GET HOTELS REQUEST : (kliče vendar ne prikaže)
-    getHotels() {
-      const options = {
-        method: "GET",
-        url: "https://hotels4.p.rapidapi.com/locations/v2/search",
-        params: {
-          query: this.showCountryCapital,
-          locale: "en_US",
-          currency: "USD",
-        },
-        headers: {
-          "x-rapidapi-host": "hotels4.p.rapidapi.com",
-          "x-rapidapi-key":
-            "8e3eb0b54fmshbff78dad8e4074cp1bd8ccjsndca5d0654ae3",
-        },
-      };
+    // getHotels() {
+    //   const options = {
+    //     method: "GET",
+    //     url: "https://hotels4.p.rapidapi.com/locations/v2/search",
+    //     params: {
+    //       query: this.showCountryCapital,
+    //       locale: "en_US",
+    //       currency: "USD",
+    //     },
+    //     headers: {
+    //       "x-rapidapi-host": "hotels4.p.rapidapi.com",
+    //       "x-rapidapi-key":
+    //         "8e3eb0b54fmshbff78dad8e4074cp1bd8ccjsndca5d0654ae3",
+    //     },
+    //   };
 
-      axios
-        .request(options)
-        .then(function (response) {
-          this.hotels = response;
-          console.log("GET HOTEL REQUEST");
-          console.log(response);
-        })
-        .catch(function (error) {
-          //   console.error(error);
-        });
-    },
+    //   axios
+    //     .request(options)
+    //     .then(function (response) {
+    //       this.hotels = response;
+    //       console.log("GET HOTEL REQUEST");
+    //       console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //       //   console.error(error);
+    //     });
+    //},
   },
 };
 </script>
