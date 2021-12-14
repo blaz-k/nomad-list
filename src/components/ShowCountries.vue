@@ -8,6 +8,12 @@
   </div> -->
 
   <div id="show">
+    <div v-if="populationArea">
+      Populationarea e obstaja:
+      {{ populationArea }}
+    </div>
+    <p>Populationarea: {{ populationArea }}</p>
+
     <section class="card-list" v-if="weatherData">
       <article class="card">
         <header class="card-header">
@@ -17,10 +23,10 @@
             {{ showCountryCapital.country }} is:
           </h2>
           <h3>{{ Math.round(weatherData.main.temp) }}°C</h3>
-          <div>
-            <p>It has population of: on km/2</p>
-          </div>
-          <!-- <p>{{ covidResults[countryCovid] }}</p> -->
+          <p>
+            <!-- There has been {{ covidResults[countryCovid].confirmed }} confirmed
+            casses since the start of covid. -->
+          </p>
         </header>
         <div class="card-author">
           <a href="#" class="author-avatar">
@@ -50,7 +56,7 @@ export default {
     ...mapState(["countriesAndCapitals"]),
   },
   created() {
-    this.getWeatherData();
+    // this.getWeatherData();
     // this.getCovid();
     // this.getHotels();
     this.getPopulationArea();
@@ -75,29 +81,35 @@ export default {
     };
   },
   methods: {
-    // GET POPULATION AND AREA REQUEST
+    // GET POPULATION AND AREA REQUEST( poklice vendar ne morem prikazati)
     getPopulationArea() {
       const options = {
         method: "GET",
-        url: `${this.url2}${this.countryId}`,
-        // url: "https://spott.p.rapidapi.com/places/", to je začeten url
+        // url: `${this.url2}${this.countryId}`,
+        url: `https://spott.p.rapidapi.com/places/${this.countryId}`,
         headers: {
           "x-rapidapi-host": "spott.p.rapidapi.com",
-          "x-rapidapi-key": "",
+          "x-rapidapi-key":
+            "c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a",
         },
       };
 
       axios
         .request(options)
         .then(function (response) {
-          //   console.log(response.data);
+          console.log("before");
+          console.log(response);
+          console.log("after");
+          this.populationArea = response;
+          console.log("pol");
+          console.log(this.populationArea);
         })
         .catch(function (error) {
-          //   console.error(error);
+          console.error(error);
         });
     },
 
-    // GET WEATHER REQUEST :
+    // GET WEATHER REQUEST : (deluje)
     async getWeatherData() {
       try {
         let res = await axios.get(
@@ -110,18 +122,20 @@ export default {
           `${this.weatherUrl}${this.showCountryCapital.country}&units=${this.units}&appid=${this.weatherApi}`
         );
         this.weatherData = res.data;
+        console.log("GET WEATHER REQUEST:");
         console.log(this.weatherData);
       }
     },
 
-    // GET HOTELS REQUEST :
+    // GET COVID REQUEST : (deluje)
     async getCovid() {
       let response = await axios.get(`${this.covidUrl}${this.countryCovid}`);
       this.covidResults = response.data;
-      //   console.log(this.covidResults);
+      // console.log("GET COVID REQUEST:");
+      // console.log(this.covidResults);
     },
 
-    // GET COVID REQUEST :
+    // GET HOTELS REQUEST : (kliče vendar ne prikaže)
     getHotels() {
       const options = {
         method: "GET",
@@ -134,15 +148,16 @@ export default {
         headers: {
           "x-rapidapi-host": "hotels4.p.rapidapi.com",
           "x-rapidapi-key":
-            "c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a",
+            "8e3eb0b54fmshbff78dad8e4074cp1bd8ccjsndca5d0654ae3",
         },
       };
 
       axios
         .request(options)
         .then(function (response) {
-          //   this.hotels = response;
-          //   console.log(response);
+          this.hotels = response;
+          console.log("GET HOTEL REQUEST");
+          console.log(response);
         })
         .catch(function (error) {
           //   console.error(error);

@@ -32,16 +32,16 @@ export default {
     return {
       // IP data:
       ipUrl: "https://api.getgeoapi.com/v2/ip/check?api_key=",
-      ipApi: "",
+      ipApi: "e3bb0ec8b7180a189fbde6d6339b4e394ebebea3",
       userIp: null,
     };
   },
   methods: {
-    //IP REQUEST:
+    //IP REQUEST: (deluje)
     async getIp() {
       let res = await axios.get(`${this.ipUrl}${this.ipApi}&format=json`);
       this.userIp = res.data;
-      console.log(this.userIp);
+      // console.log(this.userIp);
     },
   },
 };
