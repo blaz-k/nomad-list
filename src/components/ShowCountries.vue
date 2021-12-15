@@ -8,14 +8,10 @@
   </div> -->
 
   <div id="show">
-    <div v-if="populationArea">
-      Populationarea e obstaja:
-      {{ populationArea }}
-    </div>
-
     <section class="card-list" v-if="weatherData">
       <article class="card">
         <header class="card-header">
+          <p>{{ hotels.data.suggestions[2].entities[0].name }}</p>
           <p>May 25th 2020</p>
           <h2>
             Temperature in {{ showCountryCapital.city }},
@@ -24,7 +20,9 @@
           <h3>{{ Math.round(weatherData.main.temp) }}°C</h3>
           <p>
             <!-- There has been {{ covidResults[countryCovid].confirmed }} confirmed
-            casses since the start of covid. -->
+            casses since the start of covid. it has population of
+            {{ populationArea.population }} on
+            {{ populationArea.areaSqKm }} km/2 -->
           </p>
         </header>
         <div class="card-author">
@@ -55,10 +53,10 @@ export default {
     ...mapState(["countriesAndCapitals"]),
   },
   created() {
-    // this.getWeatherData();
+    this.getWeatherData();
     // this.getCovid();
-    // this.getHotels();
-    this.getPopulationArea();
+    this.getHotels();
+    // this.getPopulationArea();
   },
 
   data() {
@@ -74,17 +72,47 @@ export default {
 
       //Population data:
       populationURl: "https://spott.p.rapidapi.com/places/",
-      url2: "https://spott.p.rapidapi.com/places/",
       countryId: this.showCountryCapital.abbrev,
       populationArea: null,
+
+      //Hotels data:
+      hotels: null,
     };
   },
   methods: {
+    // GET HOTELS REQUEST : (deluje )  - to do: show all landmarks name for chosen city
+    getHotels() {
+      const options = {
+        method: "GET",
+        url: "https://hotels4.p.rapidapi.com/locations/v2/search",
+        params: {
+          query: this.showCountryCapital.city,
+          locale: "en_US",
+          currency: "USD",
+        },
+        headers: {
+          "x-rapidapi-host": "hotels4.p.rapidapi.com",
+          "x-rapidapi-key":
+            "c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a",
+        },
+      };
+
+      axios
+        .request(options)
+        .then((response) => {
+          this.hotels = response;
+          console.log("GET HOTEL REQUEST");
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+
     // GET POPULATION AND AREA REQUEST( deluje)
     getPopulationArea() {
       const options = {
         method: "GET",
-        // url: `${this.url2}${this.countryId}`,
         url: `https://spott.p.rapidapi.com/places/${this.countryId}`,
         headers: {
           "x-rapidapi-host": "spott.p.rapidapi.com",
@@ -96,8 +124,8 @@ export default {
       axios
         .request(options)
         .then((response) => {
-          this.populationArea = response;
-          console.log(this.populationArea);
+          this.populationArea = response.data;
+          // console.log(this.populationArea);
         })
         .catch(function (error) {
           console.error(error);
@@ -117,8 +145,7 @@ export default {
           `${this.weatherUrl}${this.showCountryCapital.country}&units=${this.units}&appid=${this.weatherApi}`
         );
         this.weatherData = res.data;
-        console.log("GET WEATHER REQUEST:");
-        console.log(this.weatherData);
+        // console.log(this.weatherData);
       }
     },
 
@@ -126,38 +153,8 @@ export default {
     async getCovid() {
       let response = await axios.get(`${this.covidUrl}${this.countryCovid}`);
       this.covidResults = response.data;
-      // console.log("GET COVID REQUEST:");
       // console.log(this.covidResults);
     },
-
-    // GET HOTELS REQUEST : (kliče vendar ne prikaže)
-    // getHotels() {
-    //   const options = {
-    //     method: "GET",
-    //     url: "https://hotels4.p.rapidapi.com/locations/v2/search",
-    //     params: {
-    //       query: this.showCountryCapital,
-    //       locale: "en_US",
-    //       currency: "USD",
-    //     },
-    //     headers: {
-    //       "x-rapidapi-host": "hotels4.p.rapidapi.com",
-    //       "x-rapidapi-key":
-    //         "8e3eb0b54fmshbff78dad8e4074cp1bd8ccjsndca5d0654ae3",
-    //     },
-    //   };
-
-    //   axios
-    //     .request(options)
-    //     .then(function (response) {
-    //       this.hotels = response;
-    //       console.log("GET HOTEL REQUEST");
-    //       console.log(response);
-    //     })
-    //     .catch(function (error) {
-    //       //   console.error(error);
-    //     });
-    //},
   },
 };
 </script>
