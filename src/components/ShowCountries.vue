@@ -11,7 +11,7 @@
     <section class="card-list" v-if="weatherData">
       <article class="card">
         <header class="card-header">
-          <p>{{ hotels.data.suggestions[2].entities[0].name }}</p>
+          <!-- <p>{{ hotels.data.suggestions[2].entities[0].name }}</p> -->
           <p>May 25th 2020</p>
           <h2>
             Temperature in {{ showCountryCapital.city }},
@@ -55,18 +55,21 @@ export default {
   created() {
     this.getWeatherData();
     // this.getCovid();
-    this.getHotels();
+    // this.getHotels();
     // this.getPopulationArea();
+    this.getCovid();
   },
 
   data() {
     return {
+      sameApi: "c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a",
+
+      //Weather data:
       weatherApi: "a04401ce5a86509d82dbf7cafc6d2e6f",
       weatherUrl: "https://api.openweathermap.org/data/2.5/weather?q=",
       weatherData: null,
       units: "metric",
       //Covid data:
-      covidUrl: "https://covid2019-api.herokuapp.com/country/",
       covidResults: null,
       countryCovid: this.showCountryCapital.country,
 
@@ -80,20 +83,20 @@ export default {
     };
   },
   methods: {
-    // GET HOTELS REQUEST : (deluje )  - to do: show all landmarks name for chosen city
+    // GET HOTELS REQUEST : (shows hotels name, landmarks name, transports(trainstation, airport, station) for certain ciy  )
+    //  - to do: show all landmarks name for chosen city
     getHotels() {
       const options = {
         method: "GET",
         url: "https://hotels4.p.rapidapi.com/locations/v2/search",
         params: {
           query: this.showCountryCapital.city,
-          locale: "en_US",
-          currency: "USD",
+          locale: "EUR",
+          currency: "EUR",
         },
         headers: {
           "x-rapidapi-host": "hotels4.p.rapidapi.com",
-          "x-rapidapi-key":
-            "c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a",
+          "x-rapidapi-key": this.sameApi,
         },
       };
 
@@ -108,16 +111,36 @@ export default {
           console.error(error);
         });
     },
+    // GET COVID REQUEST : (shows confirmed, deaths, active, critical, day, new, for 1M population || tests total, for 1M pop,  for certain country)
+    getCovid() {
+      const options = {
+        method: "GET",
+        url: "https://covid-193.p.rapidapi.com/statistics",
+        params: { country: this.countryCovid },
+        headers: {
+          "x-rapidapi-host": "covid-193.p.rapidapi.com",
+          "x-rapidapi-key": this.sameApi,
+        },
+      };
 
-    // GET POPULATION AND AREA REQUEST( deluje)
+      axios
+        .request(options)
+        .then((response) => {
+          this.covidResults = response.data;
+          console.log(this.covidResults);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+    // GET POPULATION AND AREA REQUEST( shows area, population)
     getPopulationArea() {
       const options = {
         method: "GET",
         url: `https://spott.p.rapidapi.com/places/${this.countryId}`,
         headers: {
           "x-rapidapi-host": "spott.p.rapidapi.com",
-          "x-rapidapi-key":
-            "c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a",
+          "x-rapidapi-key": this.sameApi,
         },
       };
 
@@ -132,7 +155,7 @@ export default {
         });
     },
 
-    // GET WEATHER REQUEST : (deluje)
+    // GET WEATHER REQUEST : (shows all weather data for certain city)
     async getWeatherData() {
       try {
         let res = await axios.get(
@@ -147,13 +170,6 @@ export default {
         this.weatherData = res.data;
         // console.log(this.weatherData);
       }
-    },
-
-    // GET COVID REQUEST : (deluje)
-    async getCovid() {
-      let response = await axios.get(`${this.covidUrl}${this.countryCovid}`);
-      this.covidResults = response.data;
-      // console.log(this.covidResults);
     },
   },
 };
