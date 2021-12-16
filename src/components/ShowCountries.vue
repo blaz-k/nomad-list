@@ -55,9 +55,10 @@ export default {
   created() {
     this.getWeatherData();
     // this.getCovid();
-    // this.getHotels();
+    // this.getLandmarksAndHotels();
     // this.getPopulationArea();
-    this.getCovid();
+    // this.getCovid();
+    // this.getBestRatedHotel();
   },
 
   data() {
@@ -78,14 +79,89 @@ export default {
       countryId: this.showCountryCapital.abbrev,
       populationArea: null,
 
-      //Hotels data:
-      hotels: null,
+      //Landmark and hotels data:
+      landmarksHotels: null,
+
+      // Best Hotel data:
+      bestHotel: null,
     };
   },
   methods: {
-    // GET HOTELS REQUEST : (shows hotels name, landmarks name, transports(trainstation, airport, station) for certain ciy  )
+    //SHOW BEST RATED HOTEL IN CITY:
+    getBestRatedHotel() {
+      const options = {
+        method: "GET",
+        url: "https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation",
+        params: {
+          cityName: this.showCountryCapital.city,
+          countryName: this.showCountryCapital.country,
+        },
+        headers: {
+          "x-rapidapi-host": "best-booking-com-hotel.p.rapidapi.com",
+          "x-rapidapi-key":
+            "c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a",
+        },
+      };
+
+      axios
+        .request(options)
+        .then((response) => {
+          this.bestHotel = response.data;
+          console.log(this.bestHotel);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+
+    // GET LANDMARK || HOTEL REQUEST : (shows hotels, from which transport to hotel in what time landmarks name, transports(train-station, airport, station) for certain ciy  )
     //  - to do: show all landmarks name for chosen city
-    getHotels() {
+    // const options = {
+    //   method: 'GET',
+    //   url: 'https://hotels4.p.rapidapi.com/properties/get-details',
+    //   params: {
+    //     id: '1078494784',
+    //     checkIn: '2020-01-08',
+    //     checkOut: '2020-01-15',
+    //     adults1: '1',
+    //     currency: 'USD',
+    //     locale: 'en_US'
+    //   },
+    //   headers: {
+    //     'x-rapidapi-host': 'hotels4.p.rapidapi.com',
+    //     'x-rapidapi-key': 'c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a'
+    //   }
+    // };
+
+    // axios.request(options).then(function (response) {
+    // 	console.log(response.data);
+    // }).catch(function (error) {
+    // 	console.error(error);
+    // });
+
+    //from const options=> here; all hotels data
+
+    // import axios from "axios";
+
+    // const options = {
+    //   method: 'GET',
+    //   url: 'https://hotels4.p.rapidapi.com/properties/get-hotel-photos',
+    //   params: {id: '1078494784'},
+    //   headers: {
+    //     'x-rapidapi-host': 'hotels4.p.rapidapi.com',
+    //     'x-rapidapi-key': 'c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a'
+    //   }
+    // };
+
+    // axios.request(options).then(function (response) {
+    // 	console.log(response.data);
+    // }).catch(function (error) {
+    // 	console.error(error);
+    // });
+
+    //do tukaj za slike
+
+    getLandmarksAndHotels() {
       const options = {
         method: "GET",
         url: "https://hotels4.p.rapidapi.com/locations/v2/search",
@@ -103,9 +179,9 @@ export default {
       axios
         .request(options)
         .then((response) => {
-          this.hotels = response;
-          console.log("GET HOTEL REQUEST");
-          console.log(response);
+          this.landmarksHotels = response;
+          console.log("GET landmark REQUEST");
+          console.log(this.landmarksHotels);
         })
         .catch(function (error) {
           console.error(error);

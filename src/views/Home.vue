@@ -6,8 +6,10 @@
     {{ this.userIp.postcode }}
     {{ this.userIp.area.name }}
   </p> -->
-  <div v-for="countryCapital in countriesAndCapitals" :key="countryCapital">
-    <ShowCountries :showCountryCapital="countryCapital" />
+  <div class="row g-4 row-cols-1 row-cols-sm-2">
+    <div v-for="countryCapital in countriesAndCapitals" :key="countryCapital">
+      <ShowCountries :showCountryCapital="countryCapital" />
+    </div>
   </div>
 </template>
 
