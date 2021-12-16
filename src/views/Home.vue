@@ -6,23 +6,30 @@
     {{ this.userIp.postcode }}
     {{ this.userIp.area.name }}
   </p> -->
+
   <div class="row g-4 row-cols-1 row-cols-sm-2">
     <div v-for="countryCapital in countriesAndCapitals" :key="countryCapital">
       <ShowCountries :showCountryCapital="countryCapital" />
     </div>
   </div>
+
+  <div></div>
 </template>
 
 <script>
 import axios from "axios";
 import { mapState } from "vuex";
 import ShowCountries from "../components/ShowCountries.vue";
+import Exo from "../components/Exo.vue";
+import About from "./About.vue";
 // @ is an alias to /src
 
 export default {
   name: "Home",
   components: {
     ShowCountries,
+    Exo,
+    About,
   },
   computed: {
     ...mapState(["countriesAndCapitals"]),

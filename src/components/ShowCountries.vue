@@ -7,39 +7,94 @@
     </p>
   </div> -->
 
-  <div id="show">
-    <section class="card-list" v-if="weatherData">
-      <article class="card">
-        <header class="card-header">
-          <!-- <p>{{ hotels.data.suggestions[2].entities[0].name }}</p> -->
-          <p>May 25th 2020</p>
-          <h2>
-            Temperature in {{ showCountryCapital.city }},
-            {{ showCountryCapital.country }} is:
-          </h2>
-          <h3>{{ Math.round(weatherData.main.temp) }}°C</h3>
-          <p>
-            <!-- There has been {{ covidResults[countryCovid].confirmed }} confirmed
+  <div id="about" v-if="weatherData">
+    >
+    <div
+      class="card"
+      @click="cardOne == 'start' ? (cardOne = 'flipped') : (cardOne = 'start')"
+      v-bind:class="{ flipme: cardOne == 'flipped' }"
+    >
+      <section class="card-list card__face card__face--front">
+        <article class="card">
+          <header class="card-header">
+            <p>May 25th 2020</p>
+            <h2>{{ showCountryCapital.country }}</h2>
+          </header>
+          <div class="card-author">
+            <a href="#" class="author-avatar">
+              <img src="../assets/logo.png" alt=""
+            /></a>
+            <svg class="half-circle" viewBox="0 0 106 57">
+              <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+            </svg>
+            <div class="author-name">
+              <div class="author-name-prefix">Author</div>
+              Blaz Kmetic
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="card-list card__face card__face--back">
+        <div>
+          <article class="card">
+            <header class="card-header">
+              <p>May 25th 2020</p>
+              <h3>{{ showCountryCapital.city }}</h3>
+            </header>
+            <div class="card-author">
+              <div class="author-name">
+                <div class="author-name-prefix">Author</div>
+                Blaz Kmetic
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- <div id="show">
+    <div
+      @click="cardOne == 'start' ? (cardOne = 'flipped') : (cardOne = 'start')"
+      v-bind:class="{ flipme: cardOne == 'flipped' }"
+    > -->
+  <!-- <section
+        class="card-list card__face card__face--front card"
+        v-if="weatherData"
+      >
+        <article class="card">
+          <header class="card-header"> -->
+  <!-- <p>{{ hotels.data.suggestions[2].entities[0].name }}</p> -->
+  <!-- <p>May 25th 2020</p>
+            <h2>
+              Temperature in {{ showCountryCapital.city }},
+              {{ showCountryCapital.country }} is:
+            </h2>
+            <h3>{{ Math.round(weatherData.main.temp) }}°C</h3>
+            <p> -->
+  <!-- There has been {{ covidResults[countryCovid].confirmed }} confirmed
             casses since the start of covid. it has population of
             {{ populationArea.population }} on
             {{ populationArea.areaSqKm }} km/2 -->
-          </p>
-        </header>
-        <div class="card-author">
-          <a href="#" class="author-avatar">
-            <img src="../assets/logo.png" alt=""
-          /></a>
-          <svg class="half-circle" viewBox="0 0 106 57">
-            <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
-          </svg>
-          <div class="author-name">
-            <div class="author-name-prefix">Author</div>
-            Blaz Kmetic
+  <!-- </p>
+          </header>
+          <div class="card-author">
+            <a href="#" class="author-avatar">
+              <img src="../assets/logo.png" alt=""
+            /></a>
+            <svg class="half-circle" viewBox="0 0 106 57">
+              <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+            </svg>
+            <div class="author-name">
+              <div class="author-name-prefix">Author</div>
+              Blaz Kmetic
+            </div>
           </div>
-        </div>
-      </article>
-    </section>
-  </div>
+        </article>
+      </section> 
+    </div>
+  </div>-->
 </template>
 
 <script>
@@ -63,6 +118,7 @@ export default {
 
   data() {
     return {
+      cardOne: "start",
       sameApi: "c90dc18f0bmsh5e0e2cf7a230c4ep1b4723jsn4bbafe8dc12a",
 
       //Weather data:
@@ -251,24 +307,55 @@ export default {
 };
 </script>
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
-
+<style scoped>
+.flipme {
+  transform: rotateY(180deg);
+}
 body {
+  font-family: sans-serif;
+  color: rgb(229, 247, 217);
+}
+
+.card {
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* nisem */
+.card__face {
+  position: absolute;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card__face--back {
+  transform: rotateY(180deg);
+}
+
+/* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap"); */
+
+/* body {
   padding: 0;
   margin: 0;
   background-color: #17141d;
   color: white;
   font-family: "DM Mono", monospace;
-}
+} */
 
-#show .card-list {
+#about .card-list {
   display: flex;
-  padding: 3rem;
-  overflow-x: scroll;
+  padding: 1rem;
+  /* overflow-x: scroll; */
 }
 
-#show .card {
+#about .card {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -276,39 +363,39 @@ body {
   width: 400px;
   min-width: 250px;
   padding: 1rem;
-  border-radius: 16px;
+  border-radius: 26px;
   background: #17141d;
   box-shadow: -1rem 0 3rem #000;
 
   transition: 0.2s;
 }
 
-#show .card-list::-webkit-scrollbar {
+#about .card-list::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
-#show .card-list::-webkit-scrollbar-thumb {
+#about .card-list::-webkit-scrollbar-thumb {
   background: #201c29;
   border-radius: 10px;
   box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
     inset -2px -2px 2px rgba(0, 0, 0, 0.25);
 }
-#show .card-list::-webkit-scrollbar-track {
+#about .card-list::-webkit-scrollbar-track {
   background: linear-gradient(90deg, #201c29, #201c29 1px, #17141d 0, #17141d);
 }
 
-#show .card:hover {
+#about .card:hover {
   transform: translateY(-1rems);
 }
-#show .card:hover ~ .card {
+#about .card:hover ~ .card {
   transform: translateX(130px);
 }
 
-#show .card::not(:first-child) {
+#about .card::not(:first-child) {
   margin-left: -130px;
 }
 
-#show .card-author {
+#about .card-author {
   position: relative;
   display: grid;
   grid-template-columns: 75px 1fr;
@@ -316,7 +403,7 @@ body {
   margin: 3rem 0 0;
 }
 
-#show .author-avatar img {
+#about .author-avatar img {
   display: block;
   width: 40px;
   height: 40px;
@@ -325,7 +412,7 @@ body {
   margin: 16px 10px;
 }
 
-#show .half-circle {
+#about .half-circle {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -337,13 +424,13 @@ body {
   stroke-linecap: round;
 }
 
-#show .author-name-prefix {
+#about .author-name-prefix {
   font-style: normal;
   font-weight: 700;
   color: #7a7a8c;
 }
 
-#show .card-header h2:hover {
+#about .card-header h2:hover {
   background: linear-gradient(90deg, #ff8a00, #e52e71);
   text-shadow: none;
   background-clip: text;
