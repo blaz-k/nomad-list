@@ -8,9 +8,8 @@
   </div> -->
 
   <div id="about" v-if="weatherData">
-    >
     <div
-      class="card"
+      class="card mt-4"
       @click="cardOne == 'start' ? (cardOne = 'flipped') : (cardOne = 'start')"
       v-bind:class="{ flipme: cardOne == 'flipped' }"
     >
@@ -40,7 +39,9 @@
           <article class="card">
             <header class="card-header">
               <p>May 25th 2020</p>
-              <h3>{{ showCountryCapital.city }}</h3>
+              <h3>First infomation {{ showCountryCapital.city }}</h3>
+              <h3>Second infomation: {{ showCountryCapital.city }}</h3>
+              <h3>Third infomation: {{ showCountryCapital.city }}</h3>
             </header>
             <div class="card-author">
               <div class="author-name">
@@ -317,7 +318,8 @@ body {
 }
 
 .card {
-  transition: transform 1s;
+  transition: transform 1s ease;
+
   transform-style: preserve-3d;
   cursor: pointer;
   position: relative;
@@ -337,6 +339,7 @@ body {
 
 .card__face--back {
   transform: rotateY(180deg);
+  backface-visibility: hidden;
 }
 
 /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap"); */
@@ -351,7 +354,7 @@ body {
 
 #about .card-list {
   display: flex;
-  padding: 1rem;
+  padding: 0.5rem;
   /* overflow-x: scroll; */
 }
 
@@ -362,12 +365,21 @@ body {
   height: 350px;
   width: 400px;
   min-width: 250px;
-  padding: 1rem;
+  padding: 0.7rem;
   border-radius: 26px;
-  background: #17141d;
+  background: #1d1413;
   box-shadow: -1rem 0 3rem #000;
 
   transition: 0.2s;
+}
+
+/*Change card background color when hovering */
+#about .card__face--front .card:hover {
+  background: linear-gradient(45deg, rgb(128, 255, 156), rgb(5, 55, 163));
+}
+
+#about .card__face--back .card:hover {
+  background: linear-gradient(45deg, #ff8a00, #e52e71);
 }
 
 #about .card-list::-webkit-scrollbar {
@@ -430,8 +442,17 @@ body {
   color: #7a7a8c;
 }
 
-#about .card-header h2:hover {
+#about .card__face--front .card-header h2:hover {
   background: linear-gradient(90deg, #ff8a00, #e52e71);
+  text-shadow: none;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Lahko uporabim oranzno /rdec hover na sprednji strani in ta spodnji hover na zadnji strani čez cel background */
+#about .card__face--back .card-header h3:hover {
+  background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
   text-shadow: none;
   background-clip: text;
   -webkit-background-clip: text;
