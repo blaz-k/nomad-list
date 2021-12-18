@@ -39,9 +39,22 @@
           <article class="card">
             <header class="card-header">
               <p>May 25th 2020</p>
-              <h3>First infomation {{ showCountryCapital.city }}</h3>
-              <h3>Second infomation: {{ showCountryCapital.city }}</h3>
-              <h3>Third infomation: {{ showCountryCapital.city }}</h3>
+              <span class="badge rounded-pill bg-none">
+                <p>Country capital is: {{ showCountryCapital.city }}</p></span
+              >
+              <span class="badge rounded-pill bg-none">
+                <p>
+                  <!-- There has been
+                  {{ covidResults[countryCovid].confirmed }} confirmed casses
+                  since the start of covid. -->
+                </p></span
+              >
+              <span class="badge rounded-pill bg-none">
+                <p>
+                  it has population of {{ populationArea.population }} on
+                  {{ populationArea.areaSqKm }} km/2
+                </p></span
+              >
             </header>
             <div class="card-author">
               <div class="author-name">
@@ -112,7 +125,7 @@ export default {
     this.getWeatherData();
     // this.getCovid();
     // this.getLandmarksAndHotels();
-    // this.getPopulationArea();
+    this.getPopulationArea();
     // this.getCovid();
     // this.getBestRatedHotel();
   },
@@ -309,6 +322,10 @@ export default {
 </script>
 
 <style scoped>
+.badge {
+  border: seagreen;
+  border-style: outset;
+}
 .flipme {
   transform: rotateY(180deg);
 }

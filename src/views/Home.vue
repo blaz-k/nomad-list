@@ -7,7 +7,7 @@
     {{ this.userIp.area.name }}
   </p> -->
 
-  <div class="row g-4 row-cols-1 row-cols-sm-2">
+  <div class="row g-4 row-cols-1 row-cols-sm-4">
     <div v-for="countryCapital in countriesAndCapitals" :key="countryCapital">
       <ShowCountries :showCountryCapital="countryCapital" />
     </div>
