@@ -40,8 +40,19 @@
             <header class="card-header">
               <p>May 25th 2020</p>
               <span class="badge rounded-pill bg-none">
-                <p>Country capital is: {{ showCountryCapital.city }}</p></span
+                <span class="badge-left"> Country capital is: </span>
+                <span class="badge-right">{{
+                  showCountryCapital.city
+                }}</span></span
               >
+
+              <!-- <span class="badge rounded-pill bg-none">
+                <span class="badge-left"> Confirmed Covid19 cases:</span>
+                <span class="badge-right">
+                  {{ covidResults[countryCovid].confirmed }}</span
+                ></span
+              > -->
+
               <span class="badge rounded-pill bg-none">
                 <p>
                   <!-- There has been
@@ -49,12 +60,12 @@
                   since the start of covid. -->
                 </p></span
               >
-              <span class="badge rounded-pill bg-none">
+              <!-- <span class="badge rounded-pill bg-none">
                 <p>
                   it has population of {{ populationArea.population }} on
                   {{ populationArea.areaSqKm }} km/2
                 </p></span
-              >
+              > -->
             </header>
             <div class="card-author">
               <div class="author-name">
@@ -125,7 +136,7 @@ export default {
     this.getWeatherData();
     // this.getCovid();
     // this.getLandmarksAndHotels();
-    this.getPopulationArea();
+    // this.getPopulationArea();
     // this.getCovid();
     // this.getBestRatedHotel();
   },
@@ -468,11 +479,26 @@ body {
 }
 
 /* Lahko uporabim oranzno /rdec hover na sprednji strani in ta spodnji hover na zadnji strani čez cel background */
-#about .card__face--back .card-header h3:hover {
+#about .card__face--back .badge:hover {
   background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
   text-shadow: none;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.badge {
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.badge-left {
+  font-weight: 300;
+  font-size: 1rem;
+}
+.badge-right {
+  font-weight: 900;
+  font-size: 1rem;
+  margin-left: 15px;
 }
 </style>

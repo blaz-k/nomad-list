@@ -4,8 +4,8 @@ export default createStore({
   state: {
     countriesAndCapitals: [
       { country: "Slovenia", city: "Ljubljana", id: 1, abbrev: "SI" },
-      { country: "Austria", city: "Vienna", id: 2, abbrev: "AT" },
-      { country: "Belgium", city: "Brussels", id: 3, abbrev: "BE" },
+      // { country: "Austria", city: "Vienna", id: 2, abbrev: "AT" },
+      // { country: "Belgium", city: "Brussels", id: 3, abbrev: "BE" },
       // { country: "Bulgaria", city: "Sofia", id: 4, abbrev: "BG" },
       // { country: "Croatia", city: "Zagreb", id: 5, abbrev: "HR" },
       // { country: "Cyprus", city: "Nicosia", id: 6, abbrev: "CY" },
