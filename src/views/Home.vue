@@ -7,7 +7,7 @@
     {{ this.userIp.area.name }}
   </p> -->
 
-  <div class="row g-4 row-cols-1 row-cols-sm-4">
+  <div class="row g-4 row-cols-1 row-cols-sm-4 container-fluid">
     <div v-for="countryCapital in countriesAndCapitals" :key="countryCapital">
       <ShowCountries :showCountryCapital="countryCapital" />
     </div>
@@ -56,4 +56,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container-fluid {
+  max-width: 95%;
+}
+</style>

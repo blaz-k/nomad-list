@@ -333,10 +333,6 @@ export default {
 </script>
 
 <style scoped>
-.badge {
-  border: seagreen;
-  border-style: outset;
-}
 .flipme {
   transform: rotateY(180deg);
 }
@@ -347,7 +343,6 @@ body {
 
 .card {
   transition: transform 1s ease;
-
   transform-style: preserve-3d;
   cursor: pointer;
   position: relative;
@@ -392,11 +387,12 @@ body {
   flex-direction: column;
   height: 350px;
   width: 400px;
-  min-width: 250px;
-  padding: 0.7rem;
+  min-width: 150px;
+  padding: 0.9rem;
   border-radius: 26px;
   background: #1d1413;
-  box-shadow: -1rem 0 3rem #000;
+  box-shadow: -1rem 0 4em rgb(184, 2, 2);
+  /* margin-left: 50px; */
 
   transition: 0.2s;
 }
@@ -426,6 +422,8 @@ body {
 
 #about .card:hover {
   transform: translateY(-1rems);
+  transition: 1.5s linear;
+  margin-left: -5%;
 }
 #about .card:hover ~ .card {
   transform: translateX(130px);
@@ -440,7 +438,7 @@ body {
   display: grid;
   grid-template-columns: 75px 1fr;
   align-items: center;
-  margin: 3rem 0 0;
+  margin: 9rem 0 0;
 }
 
 #about .author-avatar img {
@@ -487,7 +485,11 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* BADGE */
+
 .badge {
+  border: seagreen;
+  border-style: outset;
   display: flex;
   margin-bottom: 4px;
 }
