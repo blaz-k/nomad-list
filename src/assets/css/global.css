@@ -1,0 +1,1541 @@
+@media only screen and (min-device-width: 0) and (max-device-width: 340px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container-fluid {
+    max-width: 90%;
+
+    margin-left: -1rem;
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+  body {
+    font-family: sans-serif;
+    color: rgb(229, 247, 217);
+
+    background-color: rgb(36, 0, 134);
+  }
+
+  .card {
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card__face--back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+
+  #about .card-list {
+    display: flex;
+    padding: 0.5rem;
+    /* overflow-x: scroll; */
+  }
+
+  #about .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 200px;
+    width: 300px;
+    min-width: 200px;
+    padding: 0.4rem;
+    border-radius: 26px;
+    background: #1d1413;
+    box-shadow: -1rem 0 4em rgb(184, 2, 2);
+    /* margin-left: 50px; */
+
+    transition: 0.2s;
+  }
+
+  /* Change card background color when hovering */
+  #about .card__face--front .card:hover {
+    background: linear-gradient(45deg, rgb(128, 255, 156), rgb(5, 55, 163));
+  }
+
+  #about .card__face--back .card:hover {
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+  }
+
+  #about .card-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  #about .card-list::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  #about .card-list::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      #201c29,
+      #201c29 1px,
+      #17141d 0,
+      #17141d
+    );
+  }
+
+  #about .card:hover {
+    transform: translateY(-1rems);
+    transition: 0.5s linear;
+    margin-left: -10px;
+  }
+  #about .card:hover ~ .card {
+    transform: translateX(130px);
+  }
+
+  #about .card::not(:first-child) {
+    margin-left: -130px;
+  }
+
+  #about .card-author {
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    margin: 9rem 0 0;
+  }
+
+  #about .author-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* filter: grayscale(100%);  Uncomment for BLACK AND WHITE picture */
+    margin: 16px 10px;
+  }
+
+  #about .half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: #ff8a00;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+
+  #about .author-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+
+  #about .card__face--front .card-header h2:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Lahko uporabim oranzno /rdec hover na sprednji strani in ta spodnji hover na zadnji strani čez cel background */
+  #about .card__face--back .badge:hover {
+    background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* BADGE */
+
+  .badge {
+    border: seagreen;
+    border-style: outset;
+    display: flex;
+    margin-bottom: 4px;
+  }
+
+  .badge-left {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .badge-right {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-left: 15px;
+  }
+
+  /* kasnejejejejej */
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap"); */
+
+  /* body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+}
+
+@media only screen and (min-device-width: 340px) and (max-device-width: 400px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container-fluid {
+    max-width: 90%;
+
+    margin-left: -1rem;
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+  body {
+    font-family: sans-serif;
+    color: rgb(229, 247, 217);
+
+    background-color: rgb(255, 0, 212);
+  }
+
+  .card {
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card__face--back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+
+  #about .card-list {
+    display: flex;
+    padding: 0.5rem;
+    /* overflow-x: scroll; */
+  }
+
+  #about .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 350px;
+    width: 300px;
+    min-width: 200px;
+    padding: 0.4rem;
+    border-radius: 26px;
+    background: #1d1413;
+    box-shadow: -1rem 0 4em rgb(184, 2, 2);
+    /* margin-left: 50px; */
+
+    transition: 0.2s;
+  }
+
+  /* Change card background color when hovering */
+  #about .card__face--front .card:hover {
+    background: linear-gradient(45deg, rgb(128, 255, 156), rgb(5, 55, 163));
+  }
+
+  #about .card__face--back .card:hover {
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+  }
+
+  #about .card-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  #about .card-list::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  #about .card-list::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      #201c29,
+      #201c29 1px,
+      #17141d 0,
+      #17141d
+    );
+  }
+
+  #about .card:hover {
+    transform: translateY(-1rems);
+    transition: 0.5s linear;
+    margin-left: -10px;
+  }
+  #about .card:hover ~ .card {
+    transform: translateX(130px);
+  }
+
+  #about .card::not(:first-child) {
+    margin-left: -130px;
+  }
+
+  #about .card-author {
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    margin: 9rem 0 0;
+  }
+
+  #about .author-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* filter: grayscale(100%);  Uncomment for BLACK AND WHITE picture */
+    margin: 16px 10px;
+  }
+
+  #about .half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: #ff8a00;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+
+  #about .author-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+
+  #about .card__face--front .card-header h2:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Lahko uporabim oranzno /rdec hover na sprednji strani in ta spodnji hover na zadnji strani čez cel background */
+  #about .card__face--back .badge:hover {
+    background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* BADGE */
+
+  .badge {
+    border: seagreen;
+    border-style: outset;
+    display: flex;
+    margin-bottom: 4px;
+  }
+
+  .badge-left {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .badge-right {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-left: 15px;
+  }
+
+  /* kasnejejejejej */
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap"); */
+
+  /* body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+}
+
+@media only screen and (min-device-width: 400px) and (max-device-width: 460px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container-fluid {
+    max-width: 90%;
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+  body {
+    font-family: sans-serif;
+    color: rgb(229, 247, 217);
+
+    background-color: rgb(5, 48, 31);
+  }
+
+  .card {
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card__face--back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+
+  #about .card-list {
+    display: flex;
+    padding: 0.5rem;
+    /* overflow-x: scroll; */
+  }
+
+  #about .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 350px;
+    width: 365px;
+    min-width: 200px;
+    padding: 0.6rem;
+    border-radius: 26px;
+    background: #1d1413;
+    box-shadow: -1rem 0 4em rgb(184, 2, 2);
+    /* margin-left: 50px; */
+
+    transition: 0.2s;
+  }
+
+  /* Change card background color when hovering */
+  #about .card__face--front .card:hover {
+    background: linear-gradient(45deg, rgb(128, 255, 156), rgb(5, 55, 163));
+  }
+
+  #about .card__face--back .card:hover {
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+  }
+
+  #about .card-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  #about .card-list::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  #about .card-list::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      #201c29,
+      #201c29 1px,
+      #17141d 0,
+      #17141d
+    );
+  }
+
+  #about .card:hover {
+    transform: translateY(-1rems);
+    transition: 0.5s linear;
+    margin-left: -10px;
+  }
+  #about .card:hover ~ .card {
+    transform: translateX(130px);
+  }
+
+  #about .card::not(:first-child) {
+    margin-left: -130px;
+  }
+
+  #about .card-author {
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    margin: 9rem 0 0;
+  }
+
+  #about .author-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* filter: grayscale(100%);  Uncomment for BLACK AND WHITE picture */
+    margin: 16px 10px;
+  }
+
+  #about .half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: #ff8a00;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+
+  #about .author-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+
+  #about .card__face--front .card-header h2:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Lahko uporabim oranzno /rdec hover na sprednji strani in ta spodnji hover na zadnji strani čez cel background */
+  #about .card__face--back .badge:hover {
+    background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* BADGE */
+
+  .badge {
+    border: seagreen;
+    border-style: outset;
+    display: flex;
+    margin-bottom: 4px;
+  }
+
+  .badge-left {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .badge-right {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-left: 15px;
+  }
+
+  /* kasnejejejejej */
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap"); */
+
+  /* body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+}
+
+@media only screen and (min-device-width: 460px) and (max-device-width: 600px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container-fluid {
+    max-width: 90%;
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+  body {
+    font-family: sans-serif;
+    color: rgb(229, 247, 217);
+
+    background-color: rgb(157, 211, 57);
+  }
+
+  .card {
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card__face--back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+
+  #about .card-list {
+    display: flex;
+    padding: 0.5rem;
+    /* overflow-x: scroll; */
+  }
+
+  #about .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 350px;
+    width: 400px;
+    min-width: 200px;
+    padding: 0.9rem;
+    border-radius: 26px;
+    background: #1d1413;
+    box-shadow: -1rem 0 4em rgb(184, 2, 2);
+    /* margin-left: 50px; */
+
+    transition: 0.2s;
+  }
+
+  /* Change card background color when hovering */
+  #about .card__face--front .card:hover {
+    background: linear-gradient(45deg, rgb(128, 255, 156), rgb(5, 55, 163));
+  }
+
+  #about .card__face--back .card:hover {
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+  }
+
+  #about .card-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  #about .card-list::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  #about .card-list::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      #201c29,
+      #201c29 1px,
+      #17141d 0,
+      #17141d
+    );
+  }
+
+  #about .card:hover {
+    transform: translateY(-1rems);
+    transition: 0.5s linear;
+    margin-left: -10px;
+  }
+  #about .card:hover ~ .card {
+    transform: translateX(130px);
+  }
+
+  #about .card::not(:first-child) {
+    margin-left: -130px;
+  }
+
+  #about .card-author {
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    margin: 9rem 0 0;
+  }
+
+  #about .author-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* filter: grayscale(100%);  Uncomment for BLACK AND WHITE picture */
+    margin: 16px 10px;
+  }
+
+  #about .half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: #ff8a00;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+
+  #about .author-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+
+  #about .card__face--front .card-header h2:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Lahko uporabim oranzno /rdec hover na sprednji strani in ta spodnji hover na zadnji strani čez cel background */
+  #about .card__face--back .badge:hover {
+    background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* BADGE */
+
+  .badge {
+    border: seagreen;
+    border-style: outset;
+    display: flex;
+    margin-bottom: 4px;
+  }
+
+  .badge-left {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .badge-right {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-left: 15px;
+  }
+
+  /* kasnejejejejej */
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap"); */
+
+  /* body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+}
+
+@media only screen and (min-device-width: 600px) and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+  .container-fluid {
+    max-width: 90%;
+    margin-left: 3rem;
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+  body {
+    font-family: sans-serif;
+    color: rgb(229, 247, 217);
+
+    background-color: rgb(47, 0, 255);
+  }
+
+  .card {
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card__face--back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+
+  #about .card-list {
+    display: flex;
+    padding: 0.5rem;
+    /* overflow-x: scroll; */
+  }
+
+  #about .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 400px;
+    width: 500px;
+    min-width: 50px;
+    padding: 0.9rem;
+    border-radius: 26px;
+    background: #1d1413;
+    box-shadow: -1rem 0 4em rgb(184, 2, 2);
+    /* margin-left: 50px; */
+
+    transition: 0.2s;
+  }
+
+  /* Change card background color when hovering */
+  #about .card__face--front .card:hover {
+    background: linear-gradient(45deg, rgb(128, 255, 156), rgb(5, 55, 163));
+  }
+
+  #about .card__face--back .card:hover {
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+  }
+
+  #about .card-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  #about .card-list::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  #about .card-list::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      #201c29,
+      #201c29 1px,
+      #17141d 0,
+      #17141d
+    );
+  }
+
+  #about .card:hover {
+    transform: translateY(-1rems);
+    transition: 0.5s linear;
+    margin-left: -10px;
+  }
+  #about .card:hover ~ .card {
+    transform: translateX(130px);
+  }
+
+  #about .card::not(:first-child) {
+    margin-left: -130px;
+  }
+
+  #about .card-author {
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    margin: 9rem 0 0;
+  }
+
+  #about .author-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* filter: grayscale(100%);  Uncomment for BLACK AND WHITE picture */
+    margin: 16px 10px;
+  }
+
+  #about .half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: #ff8a00;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+
+  #about .author-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+
+  #about .card__face--front .card-header h2:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Lahko uporabim oranzno /rdec hover na sprednji strani in ta spodnji hover na zadnji strani čez cel background */
+  #about .card__face--back .badge:hover {
+    background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* BADGE */
+
+  .badge {
+    border: seagreen;
+    border-style: outset;
+    display: flex;
+    margin-bottom: 4px;
+  }
+
+  .badge-left {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .badge-right {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-left: 15px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .container-fluid {
+    max-width: 90%;
+    margin-left: -1rem;
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+  body {
+    font-family: sans-serif;
+    color: rgb(229, 247, 217);
+
+    background-color: rgb(141, 37, 71);
+  }
+
+  .card {
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card__face--back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+
+  #about .card-list {
+    display: flex;
+    padding: 0.5rem;
+    /* overflow-x: scroll; */
+  }
+
+  #about .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 350px;
+    width: 320px;
+    min-width: 50px;
+    padding: 0.9rem;
+    border-radius: 26px;
+    background: #1d1413;
+    box-shadow: -1rem 0 4em rgb(184, 2, 2);
+    /* margin-left: 50px; */
+
+    transition: 0.2s;
+  }
+
+  /* Change card background color when hovering */
+  #about .card__face--front .card:hover {
+    background: linear-gradient(45deg, rgb(128, 255, 156), rgb(5, 55, 163));
+  }
+
+  #about .card__face--back .card:hover {
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+  }
+
+  #about .card-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  #about .card-list::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  #about .card-list::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      #201c29,
+      #201c29 1px,
+      #17141d 0,
+      #17141d
+    );
+  }
+
+  #about .card:hover {
+    transform: translateY(-1rems);
+    transition: 0.5s linear;
+    margin-left: -10px;
+  }
+  #about .card:hover ~ .card {
+    transform: translateX(130px);
+  }
+
+  #about .card::not(:first-child) {
+    margin-left: -130px;
+  }
+
+  #about .card-author {
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    margin: 9rem 0 0;
+  }
+
+  #about .author-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* filter: grayscale(100%);  Uncomment for BLACK AND WHITE picture */
+    margin: 16px 10px;
+  }
+
+  #about .half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: #ff8a00;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+
+  #about .author-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+
+  #about .card__face--front .card-header h2:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Lahko uporabim oranzno /rdec hover na sprednji strani in ta spodnji hover na zadnji strani čez cel background */
+  #about .card__face--back .badge:hover {
+    background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* BADGE */
+
+  .badge {
+    border: seagreen;
+    border-style: outset;
+    display: flex;
+    margin-bottom: 4px;
+  }
+
+  .badge-left {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .badge-right {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-left: 15px;
+  }
+}
+
+@media screen and (min-device-width: 1024px) and (max-device-width: 1250px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .container-fluid {
+    max-width: 90%;
+    margin-left: 0rem;
+  }
+
+  body {
+    background-color: rgb(0, 0, 0);
+    font-family: sans-serif;
+    color: rgb(229, 247, 217);
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+
+  .card {
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card__face--back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+
+  #about .card-list {
+    display: flex;
+    padding: 0.5rem;
+    /* overflow-x: scroll; */
+  }
+
+  #about .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 430px;
+    width: 450px;
+    min-width: 150px;
+    padding: 0.9rem;
+    border-radius: 26px;
+    background: #1d1413;
+    box-shadow: -1rem 0 4em rgb(184, 2, 2);
+    /* margin-left: 50px; */
+
+    transition: 0.2s;
+  }
+
+  /* Change card background color when hovering */
+  #about .card__face--front .card:hover {
+    background: linear-gradient(45deg, rgb(128, 255, 156), rgb(5, 55, 163));
+  }
+
+  #about .card__face--back .card:hover {
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+  }
+
+  /* IF NEEDED UNCOMMENT */
+  /* #about .card-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  #about .card-list::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  #about .card-list::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      #201c29,
+      #201c29 1px,
+      #17141d 0,
+      #17141d
+    );
+  } */
+
+  #about .card:hover {
+    transform: translateY(-1rems);
+    transition: 0.5s linear;
+    margin-left: -5%;
+  }
+  #about .card:hover ~ .card {
+    transform: translateX(130px);
+  }
+
+  #about .card::not(:first-child) {
+    margin-left: -130px;
+  }
+
+  #about .card-author {
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    margin: 9rem 0 0;
+  }
+
+  #about .author-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* filter: grayscale(100%);  Uncomment for BLACK AND WHITE picture */
+    margin: 16px 10px;
+  }
+
+  #about .half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: #ff8a00;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+
+  #about .author-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+
+  #about .card__face--front .card-header h2:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Lahko uporabim oranzno /rdec hover na sprednji strani in ta spodnji hover na zadnji strani čez cel background */
+  #about .card__face--back .badge:hover {
+    background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* BADGE */
+
+  .badge {
+    border: seagreen;
+    border-style: outset;
+    display: flex;
+    margin-bottom: 4px;
+  }
+
+  .badge-left {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .badge-right {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-left: 15px;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap"); */
+
+  /* body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+}
+
+/* showing just screen over 1250px but not under*/
+@media only screen and (min-width: 1250px) {
+  .container-fluid {
+    max-width: 90%;
+    margin-left: 0rem;
+  }
+
+  body {
+    background-color: rgb(0, 0, 0);
+    box-shadow: -1rem 180px 8em rgb(29, 106, 248);
+    font-family: sans-serif;
+    color: rgb(229, 247, 217);
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+
+  .card {
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card__face--back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+
+  #about .card-list {
+    display: flex;
+    padding: 0.5rem;
+    /* overflow-x: scroll; */
+  }
+
+  #about .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 430px;
+    width: 450px;
+    min-width: 150px;
+    padding: 0.9rem;
+    border-radius: 26px;
+    background: #1d1413;
+    box-shadow: -1rem 0 4em rgb(184, 2, 2);
+    /* margin-left: 50px; */
+
+    transition: 0.2s;
+  }
+
+  /* Change card background color when hovering */
+  #about .card__face--front .card:hover {
+    background: linear-gradient(45deg, rgb(128, 255, 156), rgb(5, 55, 163));
+  }
+
+  #about .card__face--back .card:hover {
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+  }
+
+  #about .card-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  #about .card-list::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  #about .card-list::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      #201c29,
+      #201c29 1px,
+      #17141d 0,
+      #17141d
+    );
+  }
+
+  #about .card:hover {
+    transform: translateY(-1rems);
+    transition: 0.5s linear;
+    margin-left: -5%;
+  }
+  #about .card:hover ~ .card {
+    transform: translateX(130px);
+  }
+
+  #about .card::not(:first-child) {
+    margin-left: -130px;
+  }
+
+  #about .card-author {
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+    margin: 9rem 0 0;
+  }
+
+  #about .author-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* filter: grayscale(100%);  Uncomment for BLACK AND WHITE picture */
+    margin: 16px 10px;
+  }
+
+  #about .half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 48px;
+    fill: none;
+    stroke: #ff8a00;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+
+  #about .author-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+
+  #about .card__face--front .card-header h2:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  #about .card__face--back .card-header .badge:hover {
+    background: linear-gradient(30deg, rgb(128, 255, 156), rgb(5, 55, 163));
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* BADGE */
+
+  .badge {
+    border: seagreen;
+    border-style: outset;
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+
+  .badge-left {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .badge-right {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-left: 15px;
+  }
+
+  /* @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap"); */
+
+  /* body {
+    padding: 0;
+    margin: 0;
+    background-color: #17141d;
+    color: white;
+    font-family: "DM Mono", monospace;
+  } */
+}

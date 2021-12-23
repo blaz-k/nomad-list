@@ -1,5 +1,4 @@
 <template>
-  <h1>home</h1>
   <!-- <p>
     User searching on this site comes from : {{ this.userIp.continent.code }},
     {{ this.userIp.country.name }} -
@@ -7,7 +6,7 @@
     {{ this.userIp.area.name }}
   </p> -->
 
-  <div class="row g-4 row-cols-1 row-cols-sm-4 container-fluid">
+  <div class="row g-4 row-cols-1 row-cols-md-4 container-fluid">
     <div v-for="countryCapital in countriesAndCapitals" :key="countryCapital">
       <ShowCountries :showCountryCapital="countryCapital" />
     </div>
@@ -56,8 +55,4 @@ export default {
 };
 </script>
 
-<style>
-.container-fluid {
-  max-width: 95%;
-}
-</style>
+<style></style>
